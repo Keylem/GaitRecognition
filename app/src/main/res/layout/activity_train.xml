@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Activities.TrainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="279dp"
+        android:layout_height="319dp"
+        android:layout_marginTop="396dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/noFilesTextView"
         android:layout_width="119dp"
@@ -19,9 +28,9 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="296dp"
-        android:layout_height="594dp"
+        android:id="@+id/recyclerView2"
+        android:layout_width="279dp"
+        android:layout_height="319dp"
         android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

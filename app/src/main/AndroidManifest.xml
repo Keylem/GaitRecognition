@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecordingDeneme2">
         <activity
-            android:name=".MatchActivity2"
+            android:name=".MatchActivity"
             android:exported="false" />
 
-        android:name=".Activities.TrainActivity"
+        <activity android:name=".Activities.TrainActivity"
         android:exported="false" />
 
         <service android:name=".Utils.ValueRecorder" />

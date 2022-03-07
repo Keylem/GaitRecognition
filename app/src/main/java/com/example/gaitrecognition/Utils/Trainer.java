@@ -21,21 +21,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import de.daslaboratorium.machinelearning.classifier.Classification;
+/*import de.daslaboratorium.machinelearning.classifier.Classification;
 import de.daslaboratorium.machinelearning.classifier.Classifier;
 import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
-
+*/
 public class Trainer extends Service {
 
     public static ArrayList<Trainer> namesNumbersAndAndFiles = new ArrayList<>();
 
     public static int DEFAULT_CUT_SECONDS = 1;
-    public static Classifier classifier = new Classifier() {
-        @Override
-        public Classification classify(Collection features) {
-            return null;
-        }
-    };
+
 
     String name;
     int length;
@@ -53,9 +48,13 @@ public class Trainer extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        //TODO DÜZELT BUNU!!!!
+
         int value = 600;
         int divider = 15;
-        Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, divider), ReadCSV.name, (int) value / divider);
+        Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, 2), ReadCSV.name, 5);
+        //Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, divider), ReadCSV.name, (int) value / divider);
         extractNamesNumbersAndFiles();
         ReadCSV.readCSV.clear();
         return START_NOT_STICKY;
@@ -93,9 +92,9 @@ public class Trainer extends Service {
 
     public  void extractNamesNumbersAndFiles(){
         String finalString = "";
-        String fileName =";";
+        String fileName =""; //TODO JUST A STUPID ;
         if(!Trainer.namesNumbersAndAndFiles.isEmpty()){
-            fileName += System.currentTimeMillis();
+            //fileName += System.currentTimeMillis(); //TODO MAKES EVERY ITEM UNIQUE
             for(Trainer trainer : Trainer.namesNumbersAndAndFiles){
                 fileName += trainer.name;
                 finalString += CreateCSV.arrayToString(trainer.arrayInputManipulated, trainer.name);
@@ -150,17 +149,8 @@ public class Trainer extends Service {
             }
         }
         namesNumbersAndAndFiles.clear();
-        trainNaiveBayes(null);
+
     }
 
-    private void trainNaiveBayes(ArrayList<Trainer> features  ){
-        Classifier<Object[], String > classifier = new BayesClassifier<Object[], String>();
 
-        for(Trainer trainerIn : features){
-            List<Object[]> trainFeatures = new ArrayList<>();
-            trainFeatures.add(trainerIn.arrayInputManipulated.toArray());
-            classifier.learn(trainerIn.name, trainFeatures);
-        }
-        this.classifier = classifier;
-    }
 }

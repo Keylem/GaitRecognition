@@ -48,6 +48,8 @@ public class ReadCSV extends Service {
                 y = Float.parseFloat(nextLine[2]);
                 z = Float.parseFloat(nextLine[3]);
 
+                this.name = nextLine[4];
+
                 float[] newLine = createFloatBox(time, x, y, z);
                 readCSV.add(newLine);
 

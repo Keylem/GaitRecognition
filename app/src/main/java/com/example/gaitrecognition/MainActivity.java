@@ -15,6 +15,9 @@ import com.example.gaitrecognition.Activities.RecordActivity;
 import com.example.gaitrecognition.Activities.TrainActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static String nameTransporter = "initial";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onRecordClick(View view){
         Intent recordIntent = new Intent(this, RecordActivity.class);
+        NaiveBayesTest naiveBayesTest = new NaiveBayesTest();
         startActivity(recordIntent);
 
 
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMatchClick(View view){
-        Intent matchIntent = new Intent(this, MatchActivity2.class);
+        Intent matchIntent = new Intent(this, MatchActivity.class);
         startActivity(matchIntent);
     }
 

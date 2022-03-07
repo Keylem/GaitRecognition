@@ -115,6 +115,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
                         }
                         if(menuItem.getTitle().equals("TRAINOUTPUT")){
+
+                            //STOLEN PART
+                            Toast.makeText(context.getApplicationContext(), "SELECTED" + selectedFile.getName().toString(),
+                                    Toast.LENGTH_SHORT).show();
+
+                            ReadCSV.readCSVfile = selectedFile;
+                            Intent intentStolen = new Intent(context, ReadCSV.class);
+                            intentStolen.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startService(intentStolen);
+
+                            //STOLEN PART
+
                             //Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, 1), "KEREMTEST", 20);
                             Intent intent = new Intent(context, Trainer.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

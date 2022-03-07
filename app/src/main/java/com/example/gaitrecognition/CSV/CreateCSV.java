@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.gaitrecognition.MainActivity;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 
 
 public class CreateCSV extends Service {
+
+    public static String personName;
 
     String filename = "";
     String filepath = "";
@@ -30,6 +34,9 @@ public class CreateCSV extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        personName = MainActivity.nameTransporter;
+
         new Thread(
                 new Runnable() {
                     @Override
@@ -41,7 +48,7 @@ public class CreateCSV extends Service {
     }
 
     private void threadWork(){
-        filename = System.currentTimeMillis() + ".csv";
+        filename = System.currentTimeMillis() + personName + ".csv";
         filepath = "RecordedSaves";
         if(!isExternalStorageAvailableForRW()){
             Toast.makeText(this, "FileSystem is not readable/writable!", Toast.LENGTH_SHORT).show();
@@ -94,7 +101,7 @@ public class CreateCSV extends Service {
     public static String arrayToString(ArrayList<float[]> arrayList){
         String stringToSend = "";
         for(float[] inside : arrayList){
-            stringToSend = stringToSend + inside[0] + "," + inside[1] + "," + inside[2] + "," + inside[3] + "\n";
+            stringToSend = stringToSend + inside[0] + "," + inside[1] + "," + inside[2] + "," + inside[3] + "," + personName + "\n";
         }
         return stringToSend;
     }
@@ -103,7 +110,7 @@ public class CreateCSV extends Service {
         String stringToSend = "";
         for(float[] inside : arrayList){
             stringToSend = stringToSend + inside[0] + "," + inside[1] + "," + inside[2] +
-                    "," + inside[3] + "," + inside[4] + "," + inside[5] + "," + name+  "\n";
+                    "," + inside[3] + "," + inside[4] + "," + inside[5] + "," + name +  "\n";
         }
         return stringToSend;
     }

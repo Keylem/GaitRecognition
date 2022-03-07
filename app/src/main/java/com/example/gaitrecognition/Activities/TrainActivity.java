@@ -21,6 +21,8 @@ public class TrainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_train);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
+
         TextView noFilesTextView = findViewById(R.id.noFilesTextView);
 
         String path = getIntent().getStringExtra("path");
@@ -30,10 +32,18 @@ public class TrainActivity extends AppCompatActivity {
             noFilesTextView.setVisibility(View.VISIBLE);
             return;
         }
+
+        File trainingFolder = new File(getExternalFilesDir("TrainOutputs").getPath());
+        File[] trainingFolders = trainingFolder.listFiles();
         noFilesTextView.setVisibility((View.INVISIBLE));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter( new MyAdapter(getApplicationContext(), filesAndFolders));
+
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView2.setAdapter( new MyAdapter(getApplicationContext(), trainingFolders));
+
+
 
     }
 }

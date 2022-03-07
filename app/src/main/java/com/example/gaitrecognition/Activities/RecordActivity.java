@@ -8,21 +8,28 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.gaitrecognition.MainActivity;
 import com.example.gaitrecognition.R;
 import com.example.gaitrecognition.Utils.ValueRecorder;
 
 public class RecordActivity extends AppCompatActivity {
 
+    public static String recordedInputName = "DefaultName";
+
     TextView textViewX;
     TextView textViewY;
     TextView textViewZ;
     TextView textViewTime;
+
+    EditText nameInput;
 
     Button startStopButton;
 
@@ -39,11 +46,16 @@ public class RecordActivity extends AppCompatActivity {
 
         startStopButton = (Button) findViewById(R.id.recordButton);
 
+        nameInput = (EditText) findViewById(R.id.nameInput);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void startStopRecording(View view){
         if(ValueRecorder.recordSwitch == false){
+
+            MainActivity.nameTransporter = nameInput.getText().toString();
+
             startStopButton.setText("Recording...");
             ValueRecorder.recordSwitch = true;
             Intent valueRecorderIntent = new Intent(getApplication(), ValueRecorder.class);
