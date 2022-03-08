@@ -88,6 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 popupMenu.getMenu().add("DELETE");
                 popupMenu.getMenu().add("SELECT");
                 popupMenu.getMenu().add("TRAINOUTPUT");
+                popupMenu.getMenu().add("LEARN");
                 popupMenu.show();
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -133,7 +134,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                             context.startService(intent);
 
                         }
+                        if(menuItem.getTitle().equals("LEARN")) {
+                            ReadCSV.readTrainingCSVfile = selectedFile;
 
+                            Intent intent = new Intent(context, ReadCSV.class);
+                            ReadCSV.isTrainingModeOn = true;
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startService(intent);
+                        }
 
 
 

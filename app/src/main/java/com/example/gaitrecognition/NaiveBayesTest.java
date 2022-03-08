@@ -65,6 +65,7 @@ public class NaiveBayesTest {
        // Log.e("asd", bayes.classify(Arrays.asList(sus_list)).getCategory());
         Log.e("asd2", ""+ bayes.getCategoriesTotal());
         Log.e("asd3",  "" + bayes.classifyDetailed(susList));
+        Log.e("asd4", "" +bayes.classify(susList).getCategory());
 
 
 

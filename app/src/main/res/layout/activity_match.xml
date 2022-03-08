@@ -7,7 +7,7 @@
     tools:context=".MatchActivity">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/walkButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="244dp"
@@ -21,15 +21,15 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/walkTextView"
         android:layout_width="133dp"
         android:layout_height="101dp"
         android:layout_marginTop="81dp"
         android:layout_marginBottom="63dp"
-        android:text="Kerem is walking"
+        android:text="@string/walkTextViewDefault"
         android:textAlignment="center"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/walkButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

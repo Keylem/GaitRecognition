@@ -14,9 +14,15 @@ import android.widget.Toast;
 import com.example.gaitrecognition.Activities.RecordActivity;
 import com.example.gaitrecognition.Activities.TrainActivity;
 
+import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
+
 public class MainActivity extends AppCompatActivity {
 
     public static String nameTransporter = "initial";
+
+    public static BayesClassifier <Float, String> bayes = new BayesClassifier<Float, String>();
+
+    {bayes.setMemoryCapacity(Integer.MAX_VALUE);}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
