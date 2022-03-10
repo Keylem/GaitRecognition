@@ -85,21 +85,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             public boolean onLongClick(View view) {
 
                 PopupMenu popupMenu = new PopupMenu(context, view);
-                popupMenu.getMenu().add("DELETE");
-                popupMenu.getMenu().add("SELECT");
-                popupMenu.getMenu().add("TRAINOUTPUT");
-                popupMenu.getMenu().add("LEARN");
+                popupMenu.getMenu().add("Sil");
+                //popupMenu.getMenu().add("SELECT"); // DEPRECATED
+                popupMenu.getMenu().add("Eğit");
+                popupMenu.getMenu().add("Öğren");
                 popupMenu.show();
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
 
-                        if(menuItem.getTitle().equals("DELETE")){
+                        if(menuItem.getTitle().equals("Sil")){
                             //delete
                             boolean deleted = selectedFile.delete();
                             if(deleted){
-                                Toast.makeText(context.getApplicationContext(), "DELETED" + selectedFile.getName().toString(),
+                                Toast.makeText(context.getApplicationContext(), "Silindi" + selectedFile.getName().toString(),
                                         Toast.LENGTH_SHORT).show();
                                 view.setVisibility(View.GONE);
                             }
@@ -115,10 +115,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                             context.startService(intent);
 
                         }
-                        if(menuItem.getTitle().equals("TRAINOUTPUT")){
+                        if(menuItem.getTitle().equals("Eğit")){
 
                             //STOLEN PART
-                            Toast.makeText(context.getApplicationContext(), "SELECTED" + selectedFile.getName().toString(),
+                            Toast.makeText(context.getApplicationContext(), "Seçildi" + selectedFile.getName().toString(),
                                     Toast.LENGTH_SHORT).show();
 
                             ReadCSV.readCSVfile = selectedFile;
@@ -134,7 +134,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                             context.startService(intent);
 
                         }
-                        if(menuItem.getTitle().equals("LEARN")) {
+                        if(menuItem.getTitle().equals("Öğren")) {
                             ReadCSV.readTrainingCSVfile = selectedFile;
 
                             Intent intent = new Intent(context, ReadCSV.class);

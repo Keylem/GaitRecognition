@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +26,15 @@ public class MatchActivity extends AppCompatActivity {
 
 
     TextView walkingTextView;
+    TextView yuruyunuzTextView;
+    TextView detaylarTextView;
+    ImageView humanImageView;
+
     Button walkingButton;
+    ProgressBar progressBar;
+    double progressBarStatus = 0;
+    int countdownMiliseconds = 30000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,18 @@ public class MatchActivity extends AppCompatActivity {
 
         walkingTextView = findViewById(R.id.walkTextView);
         walkingButton = findViewById(R.id.walkButton);
+        progressBar = findViewById(R.id.progressBar);
+        yuruyunuzTextView = findViewById(R.id.yuruyunuzTextView);
+        detaylarTextView = findViewById(R.id.detaylarTextView);
+        humanImageView = findViewById(R.id.humanImageView);
+
+        progressBar.setVisibility(View.INVISIBLE);
+        yuruyunuzTextView.setVisibility(View.INVISIBLE);
+        detaylarTextView.setVisibility(View.INVISIBLE);
+
+        humanImageView.setVisibility(View.INVISIBLE);
+
+        detaylarTextView.setMovementMethod(new ScrollingMovementMethod());
 
         walkingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +65,14 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     public void startWalking(View view){
-        walkingButton.setText("Walking...");
+        //walkingButton.setText("Walking...");
+        walkingButton.setVisibility(View.INVISIBLE);
+        detaylarTextView.setVisibility(View.INVISIBLE);
+        humanImageView.setVisibility(View.INVISIBLE);
+
+        progressBar.setVisibility(View.VISIBLE);
+        yuruyunuzTextView.setVisibility(View.VISIBLE);
+
         ValueRecorder.recordSwitch= true;
         Intent valueRecorderIntent = new Intent(getApplication(), ValueRecorder.class);
 
@@ -57,10 +87,11 @@ public class MatchActivity extends AppCompatActivity {
             }
 
         }
-        new CountDownTimer(30000, 1000){
+        new CountDownTimer(countdownMiliseconds, 1000){
             @Override
             public void onTick(long millisUntilFinished) {
                 walkingTextView.setText(String.valueOf(millisUntilFinished / 1000));
+                progressBar.setProgress(  (int)  ((countdownMiliseconds - millisUntilFinished) * 100 / countdownMiliseconds));
             }
 
             @Override
@@ -70,9 +101,20 @@ public class MatchActivity extends AppCompatActivity {
 
                 for(float[] inResults : results){
                     String bayesResult = NaiveBayesCheck.nbChecker(inResults[0], inResults[1], inResults[2], inResults[3], inResults[4], inResults[5]);
+                    String detailedBayesResult = NaiveBayesCheck.detailedNBchecker(inResults[0], inResults[1], inResults[2], inResults[3], inResults[4], inResults[5]);
                     Log.e("BayesCheckResult: ", bayesResult);
-                    walkingTextView.setText(bayesResult);
-                    walkingButton.setText("WALK");
+                    walkingTextView.setText("Bulunan kişi: " + bayesResult);
+
+                    walkingButton.setVisibility(View.VISIBLE);
+
+                    progressBar.setVisibility(View.INVISIBLE);
+                    yuruyunuzTextView.setVisibility(View.INVISIBLE);
+                    detaylarTextView.setVisibility(View.VISIBLE);
+
+                    humanImageView.setVisibility(View.VISIBLE);
+
+                    detaylarTextView.setText("Detaylar: \n" + detailedBayesResult);
+                    walkingButton.setText("Yürü");
                 }
             }
         }.start();

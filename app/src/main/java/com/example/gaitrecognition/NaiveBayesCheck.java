@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import weka.classifiers.bayes.NaiveBayes;
+
 public class NaiveBayesCheck {
 
     public NaiveBayesCheck(){
@@ -19,6 +21,10 @@ public class NaiveBayesCheck {
         return MainActivity.bayes.classify(featuresBoxCreator(xA, yA, zA, xS, yS, zS)).getCategory();
     }
 
+    public static String detailedNBchecker(float xA, float yA, float zA, float xS, float yS, float zS){
+        return "" + MainActivity.bayes.classifyDetailed(featuresBoxCreator(xA, yA, zA, xS, yS, zS));
+    }
+
     public static ArrayList<Float> featuresBoxCreator(float xA, float yA, float zA, float xS, float yS, float zS){
         ArrayList<Float> features = new ArrayList<Float>();
 
@@ -30,5 +36,9 @@ public class NaiveBayesCheck {
         features.add(zS);
 
         return features;
+    }
+
+    {
+
     }
 }

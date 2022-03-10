@@ -9,11 +9,12 @@
 
     <TextView
         android:id="@+id/walkTextView"
-        android:layout_width="133dp"
-        android:layout_height="101dp"
+        android:layout_width="382dp"
+        android:layout_height="143dp"
         android:layout_marginTop="81dp"
         android:text="@string/walkTextViewDefault"
         android:textAlignment="center"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +24,62 @@
         android:id="@+id/walkButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:clickable="true"
-        android:text="WALK"
+        android:text="Yürü"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/walkTextView" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
+        android:layout_width="236dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="48dp"
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/walkTextView" />
+
+    <TextView
+        android:id="@+id/yuruyunuzTextView"
+        android:layout_width="156dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/yuruyunuzDefaultValue"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/walkTextView" />
+
+    <TextView
+        android:id="@+id/detaylarTextView"
+        android:layout_width="232dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical"
+        android:text="detaylarTextView"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <ImageView
+        android:id="@+id/humanImageView"
+        android:layout_width="209dp"
+        android:layout_height="490dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_stickman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

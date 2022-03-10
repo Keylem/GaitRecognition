@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Gait Recognition w/Accelerometer</string>
-    <string name="recordButtonDefault">Record</string>
-    <string name="xDefault">None</string>
-    <string name="yDefault">None</string>
-    <string name="zDefault">None</string>
-    <string name="timeDefault">0.0</string>
+    <string name="app_name">Yürüyüş Ritmini Kullanarak Kimliklendirme</string>
+    <string name="recordButtonDefault">Kayda başla</string>
+    <string name="xDefault">x:</string>
+    <string name="yDefault">y:</string>
+    <string name="zDefault">z:</string>
+    <string name="timeDefault">zaman: 0.0</string>
     <string name="title_activity_train">TrainActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -15,5 +15,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_match">MatchActivity</string>
-    <string name="walkTextViewDefault">Click to \"walk\" button to start walking</string>
+    <string name="walkTextViewDefault">Yürüyüş kaydını başlatmak için \"yürü\" düğmesine basınız.</string>
+    <string name="yuruyunuzDefaultValue">Yürüyünüz...</string>
 </resources>

@@ -38,6 +38,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.3.5'
 
     implementation 'com.github.ptnplanet:Java-Naive-Bayes-Classifier:1.0.7'
+    implementation files('sampledata/weka-android-release.aar')
+
+    //implementation 'com.github.lzyzsd:circleprogress:1.2.4'
+
 
     //implementation 'nz.ac.waikato.cms.weka:weka-stable:3.8.5'
 

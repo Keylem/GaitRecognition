@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.view.View;
@@ -28,6 +29,7 @@ public class RecordActivity extends AppCompatActivity {
     TextView textViewY;
     TextView textViewZ;
     TextView textViewTime;
+    TextView kaydedildiTextView;
 
     EditText nameInput;
 
@@ -42,11 +44,33 @@ public class RecordActivity extends AppCompatActivity {
         textViewX = (TextView) findViewById(R.id.textViewX);
         textViewY = (TextView) findViewById(R.id.textViewY);
         textViewZ = (TextView) findViewById(R.id.textViewZ);
+
+        kaydedildiTextView = (TextView) findViewById(R.id.kaydedildiTextView);
+
         textViewTime = (TextView) findViewById(R.id.textViewTime);
+
 
         startStopButton = (Button) findViewById(R.id.recordButton);
 
         nameInput = (EditText) findViewById(R.id.nameInput);
+
+        kaydedildiTextView.setVisibility(View.INVISIBLE);
+
+        Handler handler = new Handler();
+
+        Runnable r=new Runnable() {
+            public void run() {
+                dataPreview();
+                handler.postDelayed(this, 50);
+            }
+        };
+
+        handler.postDelayed(r, 500);
+
+
+    }
+
+    public void run(){
 
     }
 
@@ -54,9 +78,11 @@ public class RecordActivity extends AppCompatActivity {
     public void startStopRecording(View view){
         if(ValueRecorder.recordSwitch == false){
 
+            kaydedildiTextView.setVisibility(View.INVISIBLE);
+
             MainActivity.nameTransporter = nameInput.getText().toString();
 
-            startStopButton.setText("Recording...");
+            startStopButton.setText("Kaydediliyor...");
             ValueRecorder.recordSwitch = true;
             Intent valueRecorderIntent = new Intent(getApplication(), ValueRecorder.class);
            // startService(valueRecorderIntent);
@@ -75,9 +101,11 @@ public class RecordActivity extends AppCompatActivity {
             //
 
         }else{
-            startStopButton.setText("Record!");
+            startStopButton.setText("Kayda Başla");
             dataPreview();
             ValueRecorder.recordSwitch = false;
+            kaydedildiTextView.setText(nameInput.getText() + "  kişisi kaydedildi!");
+            kaydedildiTextView.setVisibility(View.VISIBLE);
 
         }
 
@@ -90,7 +118,7 @@ public class RecordActivity extends AppCompatActivity {
             textViewY.setText("Y: " + getBackData[2]);
             textViewZ.setText("Z: " + getBackData[3]);
 
-            textViewTime.setText("Time Elapsed: " + getBackData[0]);
+            textViewTime.setText("Geçen Zaman: " + getBackData[0]);
 
         }
     }

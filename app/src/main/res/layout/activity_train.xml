@@ -8,10 +8,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="279dp"
-        android:layout_height="319dp"
-        android:layout_marginTop="396dp"
+        android:layout_width="203dp"
+        android:layout_height="231dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.158"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,11 +30,53 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
-        android:layout_width="279dp"
-        android:layout_height="319dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="239dp"
+        android:layout_height="253dp"
+        android:layout_marginTop="416dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="133dp"
+        android:layout_height="198dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="32dp"
+        android:text="1) Ham Veri: \nEğit Butonuna basarak veriyi düzenleyin"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="115dp"
+        android:layout_height="248dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="420dp"
+        android:text="2) Öğren: \nÖğren tuşuna basarak düzenlenmiş veriyi öğrenin."
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerView2"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="285dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="Eğitim saniye aralığı: Default = 1Sn"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
