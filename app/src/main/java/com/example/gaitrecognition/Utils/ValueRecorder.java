@@ -27,6 +27,8 @@ public class ValueRecorder extends Service implements SensorEventListener {
     private Sensor recorderSensor;
     private float x, y, z;
 
+    //
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
