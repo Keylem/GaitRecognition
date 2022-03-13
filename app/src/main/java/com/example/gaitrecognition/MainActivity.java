@@ -15,12 +15,20 @@ import com.example.gaitrecognition.Activities.RecordActivity;
 import com.example.gaitrecognition.Activities.TrainActivity;
 
 import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
+import weka.classifiers.Evaluation;
+import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.bayes.NaiveBayesUpdateable;
+import weka.core.Instances;
 
 public class MainActivity extends AppCompatActivity {
 
     public static String nameTransporter = "initial";
 
     public static BayesClassifier <Float, String> bayes = new BayesClassifier<Float, String>();
+
+    public static NaiveBayesUpdateable wekaNaiveBayes = new NaiveBayesUpdateable();
+
+
 
     {bayes.setMemoryCapacity(Integer.MAX_VALUE);}
 

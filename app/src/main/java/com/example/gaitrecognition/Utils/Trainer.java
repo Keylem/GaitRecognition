@@ -51,10 +51,14 @@ public class Trainer extends Service {
 
         //TODO DÜZELT BUNU!!!!
 
-        int value = 600;
-        int divider = 15;
+        //int value = 600;
+        int value = (int) ReadCSV.readCSV.get(ReadCSV.readCSV.size() -5)[0];
+
+        int divider = 10;
         //Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, 2), ReadCSV.name, 5);
-        Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, divider), ReadCSV.name, (int) value / divider);
+       // Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, divider), ReadCSV.name, (int) value / divider);
+        Trainer testTrainer = new Trainer(Normalizer.normalize(ReadCSV.readCSV, value), ReadCSV.name, (int) value / divider);
+
         extractNamesNumbersAndFiles();
         ReadCSV.readCSV.clear();
         return START_NOT_STICKY;
