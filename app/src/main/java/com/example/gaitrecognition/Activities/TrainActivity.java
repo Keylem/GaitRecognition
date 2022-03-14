@@ -2,6 +2,7 @@ package com.example.gaitrecognition.Activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +16,13 @@ import java.io.File;
 
 public class TrainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_train);
+
+        EditText editText = findViewById(R.id.editTextNumber);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         RecyclerView recyclerView2 = findViewById(R.id.recyclerView2);
@@ -42,7 +46,6 @@ public class TrainActivity extends AppCompatActivity {
 
         recyclerView2.setLayoutManager(new LinearLayoutManager(this));
         recyclerView2.setAdapter( new MyAdapter(getApplicationContext(), trainingFolders));
-
 
 
     }
